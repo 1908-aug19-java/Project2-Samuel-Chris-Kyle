@@ -7,16 +7,16 @@ import { RegisterComponent } from '../components/register/register.component';
 const routes: Routes = [
     {
         path: '',
-        component: DashboardComponent
+        pathMatch: 'full',
+        redirectTo: 'login'
     },
     {
         path: 'login',
         component: LoginComponent
     },
     {
-        path: '',
-        component: LoginComponent,
-        outlet: 'apple'
+        path: 'register',
+        component: RegisterComponent
     }
 ];
 
