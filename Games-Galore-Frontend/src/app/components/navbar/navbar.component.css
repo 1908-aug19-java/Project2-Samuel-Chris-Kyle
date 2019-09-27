@@ -1,0 +1,18 @@
+#nav1{
+    background-color: #2a72b0;
+}
+
+a{
+   color:white;
+}
+a:hover {
+    color:#2a72b0;
+}
+
+li.active a{
+    color: #2a72b0;
+}
+
+#logout{
+    border-right: 10 !important;
+}
