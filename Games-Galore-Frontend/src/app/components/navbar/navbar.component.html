@@ -9,15 +9,15 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav  mr-auto">
       <li class="nav-item" [ngClass]="{'active' : homeTab == true}" (click)="listClick('home')"><a class="nav-link"
-          href="">
+          href="" routerLink='./home'>
           <h5>Home</h5>
         </a></li>
       <li class="nav-item" [ngClass]="{'active' : profileTab == true}" (click)="listClick('profile')"><a
-          class="nav-link" href="">
+          class="nav-link" href="" routerLink='./profile'>
           <h5>Profile</h5>
         </a></li>
       <li class="nav-item" [ngClass]="{'active' : wishlistTab == true}" (click)="listClick('wishlist')"><a
-          class="nav-link" href="">
+          class="nav-link" href="" routerLink='./wishlist'>
           <h5>WishList</h5>
         </a></li>
     </ul>
