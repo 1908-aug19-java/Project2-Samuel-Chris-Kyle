@@ -1,0 +1,15 @@
+<nav class="navbar navbar-default" id = "nav1">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-left" href="#"><img src="assets/img/GamesGaloreLogo.png" width = "53"
+                   alt="GGLogo"></a>
+    </div>
+    <ul class="nav nav-tabs">
+      <li [ngClass]="{'active' : homeTab == true}" (click)="listClick('home')"><a href="#"><h5>Home</h5></a></li>
+      <li [ngClass]="{'active' : profileTab == true}" (click)="listClick('profile')"><a href="#"><h5>Profile</h5></a></li>
+      <li [ngClass]="{'active' : wishlistTab == true}" (click)="listClick('wishlist')"><a href="#"><h5>WishList</h5></a></li>
+      <li class="navbar-right"><a href=# id = "logout"><h5>log out</h5></a></li>
+    </ul>
+   
+  </div>
+</nav>
