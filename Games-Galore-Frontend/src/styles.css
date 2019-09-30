@@ -1,1 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+    background-image: url("https://www.pixel-creation.com/wp-content/uploads/full-hd-1080p-black-wallpapers-hd-desktop-backgrounds-1920x1080-2.jpg");
+    background-size: cover;
+}
