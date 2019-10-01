@@ -4,6 +4,9 @@ import { DashboardComponent } from '../components/dashboard/dashboard.component'
 import { LoginComponent } from '../components/login/login.component';
 import { RegisterComponent } from '../components/register/register.component';
 import { RouterComponent } from '../components/router/router.component';
+import { HomeComponent } from '../components/home/home.component';
+import { ProfileComponent } from '../components/profile/profile.component';
+import { WishlistComponent } from '../components/wishlist/wishlist.component'
 
 const routes: Routes = [
     {
@@ -21,7 +24,21 @@ const routes: Routes = [
     },
     {
         path: 'router',
-        component: RouterComponent
+        component: RouterComponent,
+        children: [
+            {
+                path: 'home',
+                component: HomeComponent
+            },
+            {
+                path: 'profile',
+                component: ProfileComponent
+            },
+            {
+                path: 'wishlist',
+                component: WishlistComponent
+            }
+        ]
     }
 ];
 
