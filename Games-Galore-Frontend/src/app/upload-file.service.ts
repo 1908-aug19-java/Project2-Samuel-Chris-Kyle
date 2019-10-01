@@ -19,24 +19,33 @@ export class UploadFileService {
       }
     );
     
-
-
+    let extn = file.name.split('.').pop();
+    let isImage = false;
+    let contentType = 'application/octet-stream';
+    if (extn == 'png' || extn == 'jpg' || extn == 'gif') {
+      contentType = "image/" + extn;
+      isImage = true;
+    }
     const params = {
       Bucket: 'gamesgaloreimages',
       Key: this.FOLDER + file.name,
       Body: file,
-      ContentType: 'image/png'
+      ContentType: contentType
     };
- 
-    bucket.upload(params, function (err, data) {
-      if (err) {
-        console.log('There was an error uploading your file: ', err);
-        return false;
-      }
- 
-      console.log('Successfully uploaded file.', data);
-      return true;
-    });
+    if(isImage){
+      bucket.upload(params, function (err, data) {
+        if (err) {
+          console.log('There was an error uploading your file: ', err);
+          return false;
+        }
+  
+        console.log('Successfully uploaded file.', data);
+        return true;
+      });
+    }
+    else{
+      console.log('That is not an acceptable image file type.');
+    }
   }
  
 }

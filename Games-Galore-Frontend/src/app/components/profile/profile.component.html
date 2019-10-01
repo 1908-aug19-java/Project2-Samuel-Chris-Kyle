@@ -1,19 +1,16 @@
 
-<div class="container bootstrap snippet dark">
-    <div class="row">
-  		<div class="col-sm-10"><h1>User name</h1></div>
-    	<!--<div class="col-sm-2"><a href="/users" class="pull-right"><img title="profile image" class="img-circle img-responsive" src="http://www.gravatar.com/avatar/28fd20ccec6865e2d5f0e1f4446eb7bf?s=100"></a></div>-->
-    </div>
-    <div class="row">
-  		<div class="col-sm-3"><!--left col-->
-              
+<div class="container bootstrap snippet dark card-body">
 
+    <div class="row">
+  		<div class="col-4"><!--left col-->
+              
+      <div class="text-center"><h1>User name</h1></div>  
       <div class="text-center">
-        <img src="https://gamesgaloreimages.s3.amazonaws.com/jsa-s3/justice.png" class="avatar img-circle img-thumbnail" alt="avatar">
+        <img src="https://gamesgaloreimages.s3.amazonaws.com/jsa-s3/reds2.png" class="avatar img-fluid" alt="avatar">
         <h6>Upload a different photo...</h6>
-        <button class=”btn” id=”upload_image”>Upload image</button>
+        <!--<button class=”btn” id=”upload_image”>Upload image</button>-->
         <label class="btn btn-default">
-            <input type="file" (change)="selectFile($event)">
+            <input type="file" class="btn-primary" (change)="selectFile($event)">
           </label>
            
           <button class="btn btn-success" [disabled]="!selectedFiles" (click)="upload()">Upload</button>
@@ -42,7 +39,7 @@
           </div>-->
         
         </div><!--/col-3-->
-    	<div class="col-sm-9">
+    	<div class="col-8">
             
 
               
