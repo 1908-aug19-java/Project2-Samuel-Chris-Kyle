@@ -7,11 +7,14 @@
       <img src="assets\GamesGaloreLogo.png" />
     </div>
 
+    <div>
+      <h4 style = "color:crimson" *ngIf="showError">Incorrect Information, try again</h4>
+    </div>
     <!-- Login Form -->
     <form>
-      <input type="text" id="login" class="fadeIn second" name="login" placeholder="Login">
-      <input type="text" id="password" class="fadeIn third" name="login" placeholder="Password">
-      <input type="submit" class="fadeIn fourth" value="Log In" routerLink='/router/home'>
+      <input type="text" [(ngModel)] = "uName" id="login" class="fadeIn second" name="login" placeholder="Login">
+      <input type="password" [(ngModel)] = "pass" id="password" class="fadeIn third" name="login" placeholder="Password">
+      <input type="submit" class="fadeIn fourth" value="Log In" (click) ="login()">
     </form>
 
     <!-- Remind Passowrd -->
