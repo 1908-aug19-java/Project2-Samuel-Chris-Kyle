@@ -9,9 +9,14 @@
               
 
       <div class="text-center">
-        <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
+        <img src="https://gamesgaloreimages.s3.amazonaws.com/jsa-s3/justice.png" class="avatar img-circle img-thumbnail" alt="avatar">
         <h6>Upload a different photo...</h6>
-        <input type="file" class="text-center center-block file-upload">
+        <button class=”btn” id=”upload_image”>Upload image</button>
+        <label class="btn btn-default">
+            <input type="file" (change)="selectFile($event)">
+          </label>
+           
+          <button class="btn btn-success" [disabled]="!selectedFiles" (click)="upload()">Upload</button>
       </div><br>
 
               <!--

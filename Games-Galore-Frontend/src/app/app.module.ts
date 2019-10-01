@@ -14,6 +14,7 @@ import { RouterComponent } from './components/router/router.component';
 import { HomeComponent } from './components/home/home.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
+import { UploadFileService } from './upload-file.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,7 @@ import { WishlistComponent } from './components/wishlist/wishlist.component';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [UploadFileService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
