@@ -24,15 +24,18 @@
 <div class="main">
 
   <div class='row' *ngFor="let gameRow of cardDisplayArray">
-    <div class='col' *ngFor="let game of gameRow">
+    <div class='col-md-3' *ngFor="let game of gameRow">
       <div class="card-deck">
         <div class="card">
           <img class="card-img-top" [src]="game.cover.url" alt="Card image">
           <div class="card-body">
             <h4 class="card-title">{{game.name}}</h4>
+            <h6 *ngIf="game.genrePresent">Genres: {{game.genreName}}</h6>
+            <h6 *ngIf="game.platformPresent">Platforms: {{game.platformName}}</h6>
           </div>
           <div class="card-footer">
-            <!--Modal Button-->
+            <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="bottom" title="{{game.summary}}">Info</button>
+            <button class="btn btn-success" style="float:right">Add to WishList</button>
           </div>
         </div>
       </div>

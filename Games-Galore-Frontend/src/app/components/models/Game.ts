@@ -8,4 +8,9 @@ export class Game{
     name: string;
     platforms: number[];
     summary: string;
+    popularity : number;
+    genreName : string[];
+    platformName : string[];
+    genrePresent : boolean;
+    platformPresent : boolean;
 }

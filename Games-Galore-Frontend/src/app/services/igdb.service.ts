@@ -24,7 +24,7 @@ export class IGDBService {
     if (search.length !== 0) {
       body += "search \"" + search + "\";";
     }
-    body += "\nfields name, platforms, genres, summary, cover.url;"
+    body += "\nfields name, platforms, genres, summary, cover.url, popularity;"
     let genreIdArr: number[] = [];
     if (genres.length != 0) {
       for (let g of genres) {
