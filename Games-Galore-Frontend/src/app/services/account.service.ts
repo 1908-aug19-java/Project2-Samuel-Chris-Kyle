@@ -10,7 +10,9 @@ import { Observable } from 'rxjs';
 })
 export class AccountService {
 
-  url:string = "http://ec2-54-80-50-16.compute-1.amazonaws.com:8081/gamesgalore/login?"
+  urlAccount:string = "http://ec2-54-80-50-16.compute-1.amazonaws.com:8081/gamesgalore/accounts?"
+  urlUser:string = "http://ec2-54-80-50-16.compute-1.amazonaws.com:8081/gamesgalore/users/"
+  
   constructor(private http: HttpClient) { }
 
   getAccount(userName: string): Observable<Object>{
@@ -18,10 +20,27 @@ export class AccountService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/x-www-form-urlencoded',
-        'Authorization': 'Bearer '+ sessionStorage.getItem('auth')
+        'Authorization': 'Bearer '+ localStorage.getItem('auth')
       })
       
     };
-    return this.http.post<any>(this.url + "accountUsername="+ userName, httpOptions,{observe: 'response' as 'body'});
+    return this.http.get<any>(this.urlAccount + "accountUsername="+ userName, httpOptions);
+  }
+
+  updateUser(userId: any, fName: string, lName: string, email: string): Observable<Object>{
+    const body = {
+      "userFirstName": fName,
+      "userLastName": lName,
+      "userEmail": email
+    }
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Authorization': 'Bearer '+ localStorage.getItem('auth')
+      })
+      
+    };
+    return this.http.put<any>(this.urlUser + userId, body, httpOptions);
   }
 }
