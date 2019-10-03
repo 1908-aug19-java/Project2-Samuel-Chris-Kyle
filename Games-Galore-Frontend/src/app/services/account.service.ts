@@ -27,6 +27,31 @@ export class AccountService {
     return this.http.get<any>(this.urlAccount + "accountUsername="+ userName, httpOptions);
   }
 
+  createAccount(account:
+    {
+      accountUsername: string,
+      accountPassword: string,
+      confirmPassword: string,
+      accountUser: {
+          userFirstName: string,
+          userLastName: string,
+          userEmail: string
+      },
+      genrePreferences: any[],
+      platformPreferences: any[]
+  }
+  ){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Authorization': 'Bearer '+ localStorage.getItem('auth')
+      })
+      
+    };
+
+    return this.http.post<any>(this.urlAccount, account, httpOptions)
+  }
+
   updateUser(userId: any, fName: string, lName: string, email: string): Observable<Object>{
     const body = {
       "userFirstName": fName,
