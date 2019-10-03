@@ -17,6 +17,7 @@ import { WishlistComponent } from './components/wishlist/wishlist.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginServiceService } from './services/login-service.service';
+import { ModalComponent } from './components/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { LoginServiceService } from './services/login-service.service';
     RouterComponent,
     HomeComponent,
     ProfileComponent,
-    WishlistComponent
+    WishlistComponent,
+    ModalComponent
 
   ],
   imports: [
