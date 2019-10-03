@@ -11,7 +11,6 @@ export class LoginServiceService {
   constructor(private http: HttpClient) { }
 
   loginUser(userName: string, password: string): Observable<Object>{
-    console.log("Username: " + userName + ", Password: " + password );
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/x-www-form-urlencoded'

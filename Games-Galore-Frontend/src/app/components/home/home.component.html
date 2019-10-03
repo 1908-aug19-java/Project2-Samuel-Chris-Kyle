@@ -1,5 +1,45 @@
-<p>
-  home works!
-</p>
+<div class="sidenav">
+  <h2>Search</h2>
+  <input type="text" style="width: 160px" id="searchInput" placeholder="Search for a Title">
+  <br>
+  <h3>Platform</h3>
+  <ul id="platformList">
+    <li *ngFor="let platform of platforms">
+      <label><input type="checkbox" [id]="platform.platformName"> {{platform.platformName}}</label>
+    </li>
+  </ul>
 
-<h2>{{ses}}</h2>
+  <br>
+
+  <h3>Genre</h3>
+  <ul>
+    <li *ngFor="let genre of genres">
+      <label><input type="checkbox" [id]="genre.genreName"> {{genre.genreName}}</label>
+    </li>
+  </ul>
+
+  <button class="btn btn-success" (click)="getGames()">Search</button>
+</div>
+
+<div class="main">
+
+  <div class='row' *ngFor="let gameRow of cardDisplayArray">
+    <div class='col-md-3' *ngFor="let game of gameRow">
+      <div class="card-deck">
+        <div class="card">
+          <img class="card-img-top" [src]="game.cover.url" alt="Card image">
+          <div class="card-body">
+            <h4 class="card-title">{{game.name}}</h4>
+            <h6 *ngIf="game.genrePresent">Genres: {{game.genreName}}</h6>
+            <h6 *ngIf="game.platformPresent">Platforms: {{game.platformName}}</h6>
+          </div>
+          <div class="card-footer">
+            <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="bottom" title="{{game.summary}}">Info</button>
+            <button class="btn btn-success" style="float:right">Add to WishList</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
