@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -10,7 +11,7 @@ export class NavbarComponent implements OnInit {
   homeTab = false;
   wishlistTab = false;
   profileTab = false;
-  constructor() { }
+  constructor(private router: Router) { }
 
   listClick(event) {
     this.homeTab = false;
@@ -29,6 +30,14 @@ export class NavbarComponent implements OnInit {
     }
   }
   ngOnInit() {
+    let key = localStorage.getItem('auth');
+    if (key == null) {
+      this.router.navigateByUrl("/login");
+    }
   }
 
+  clearSession() {
+    localStorage.removeItem('auth');
+    this.router.navigateByUrl('/login');
+  }
 }

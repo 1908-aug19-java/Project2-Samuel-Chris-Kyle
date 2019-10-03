@@ -18,6 +18,7 @@ import { WishlistComponent } from './components/wishlist/wishlist.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginServiceService } from './services/login-service.service';
+import { ModalComponent } from './components/modal/modal.component';
 
 import { UploadFileService } from './upload-file.service';
 
@@ -32,7 +33,8 @@ import { UploadFileService } from './upload-file.service';
     RouterComponent,
     HomeComponent,
     ProfileComponent,
-    WishlistComponent
+    WishlistComponent,
+    ModalComponent
 
   ],
   imports: [
