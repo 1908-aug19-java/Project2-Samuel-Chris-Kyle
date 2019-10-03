@@ -9,10 +9,17 @@
 
     <!-- Login Form -->
     <form>
-      <input type="text" id="login" class="fadeIn second" name="register" placeholder="Username">
-      <input type="text" id="password" class="fadeIn third" name="register" placeholder="Password">
-      <input type="text" id="confirm_password" class="fadeIn fourth" name="register" placeholder="Confirm Password">
-      <input type="submit" class="fadeIn fourth" value="Register" routerLink='/router/home'>
+      <input type="text" [(ngModel)]='uName' id="login" class="fadeIn second" name="register" placeholder="Username">
+      <div data-toggle="tooltip" data-placement="above" 
+      title="{{rule1}}
+      {{rule2}}
+      {{rule3}}
+      {{rule4}}"><input type="text" [(ngModel)]='pass' id="password" class="fadeIn third" name="register" placeholder="Password"></div>
+      <input type="text" [(ngModel)]='conPass' id="confirm_password" class="fadeIn fourth" name="register" placeholder="Confirm Password">
+      <input type="text" [(ngModel)]='fName' id="fName" class="fadeIn fifth" name = "register" placeholder="First Name">
+      <input type="text" [(ngModel)]='lName' id="lName" class="fadeIn sixth" name = "register" placeholder="Last Name">
+      <input type="text" [(ngModel)]='email' id="email" class="fadeIn seventh" name = "register" placeholder="Email">
+      <input type="submit" (click)="register()" class="fadeIn eigth" value="Register" routerLink='/router/home'>
     </form>
 
     <!-- Remind Passowrd -->

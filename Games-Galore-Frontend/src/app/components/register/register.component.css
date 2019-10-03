@@ -228,6 +228,30 @@ html {
     -moz-animation-delay: 1s;
     animation-delay: 1s;
   }
+
+  .fadeIn.fifth {
+    -webkit-animation-delay: 1.2s;
+    -moz-animation-delay: 1.2s;
+    animation-delay: 1.2s;
+  }
+
+  .fadeIn.sixth {
+    -webkit-animation-delay: 1.4s;
+    -moz-animation-delay: 1.4s;
+    animation-delay: 1.4s;
+  }
+
+  .fadeIn.seventh {
+    -webkit-animation-delay: 1.6s;
+    -moz-animation-delay: 1.6s;
+    animation-delay: 1.6s;
+  }
+
+  .fadeIn.eigth {
+    -webkit-animation-delay: 1.8s;
+    -moz-animation-delay: 1.8s;
+    animation-delay: 1.8s;
+  }
   
   /* Simple CSS3 Fade-in Animation */
   .underlineHover:after {
