@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import * as AWS from 'aws-sdk/global';
 import * as S3 from 'aws-sdk/clients/s3';
+import * as ENV from '../environments/environment'
+import { Observable, of as observableOf } from 'rxjs';
+import { resolve } from 'dns';
  
 @Injectable()
 export class UploadFileService {
@@ -13,8 +16,8 @@ export class UploadFileService {
  
     const bucket = new S3(
       {
-        accessKeyId: 'AKIAWTG6BCP43US6ISXN',
-        secretAccessKey: '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',
+        accessKeyId: ENV.environment.S3_KEY_ID,
+        secretAccessKey: ENV.environment.S3_KEY_SECRET,
         region: 'us-east-1'
       }
     );
@@ -33,7 +36,7 @@ export class UploadFileService {
       ContentType: contentType
     };
     if(isImage){
-      bucket.upload(params, function (err, data) {
+      if(bucket.upload(params, function (err, data) {
         if (err) {
           console.log('There was an error uploading your file: ', err);
           return false;
@@ -41,10 +44,24 @@ export class UploadFileService {
   
         console.log('Successfully uploaded file.', data);
         return true;
-      });
-    }
-    else{
+      })){
+        console.log('trying to resolve promise');
+        return true;
+        
+      }
+      else{
+
+        console.log('trying to cancel promise');
+        return false;
+        
+      }
+        
+        
+      
+    }else{
       console.log('That is not an acceptable image file type.');
+      return observableOf(false);
+      
     }
   }
  
