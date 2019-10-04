@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import * as AWS from 'aws-sdk/global';
 import * as S3 from 'aws-sdk/clients/s3';
-import * as ENV from '../environments/environment'
+//import * as ENV from '../environments/environment'
 import { Observable, of as observableOf } from 'rxjs';
 import { resolve } from 'dns';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -42,6 +42,7 @@ export class UploadFileService {
         accessKeyId: keyID,
         secretAccessKey: keySecret,
         region: 'us-east-1'
+
       }
     );
     
