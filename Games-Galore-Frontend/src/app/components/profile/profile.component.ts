@@ -14,7 +14,7 @@ export class ProfileComponent implements OnInit {
 
   selectedFiles: FileList;
 
-  url:string = "https://gamesgaloreimages.s3.amazonaws.com/jsa-s3/trident.png";
+  url:string = "https://gamesgaloreimages.s3.amazonaws.com/jsa-s3/default-avatar.jpg";
   imageHold:string;
   keyID="";
   keySecret="";
@@ -56,7 +56,12 @@ export class ProfileComponent implements OnInit {
         this.userProfile.fName=data[0].accountUser.userFirstName;
         this.userProfile.lName=data[0].accountUser.userLastName;
         this.userProfile.email=data[0].accountUser.userEmail;
-        this.url = data[0].accountImageUrl;
+
+        if(data[0].accountImageUrl!=null){
+          this.url = data[0].accountImageUrl;
+          console.log(data[0].accountImageUrl);
+        }
+        
 
         console.log(this.userProfile);
 
