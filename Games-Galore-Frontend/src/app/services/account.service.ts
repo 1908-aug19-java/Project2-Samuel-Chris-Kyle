@@ -5,13 +5,16 @@ import { Observable } from 'rxjs';
 
 
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class AccountService {
 
-  urlAccount:string = "http://ec2-54-80-50-16.compute-1.amazonaws.com:8081/gamesgalore/accounts?"
+  urlAccount:string = "http://ec2-54-80-50-16.compute-1.amazonaws.com:8081/gamesgalore/accounts"
   urlUser:string = "http://ec2-54-80-50-16.compute-1.amazonaws.com:8081/gamesgalore/users/"
+
+  
   
   constructor(private http: HttpClient) { }
 
@@ -25,7 +28,7 @@ export class AccountService {
       
     };
 
-    let a = this.http.get<any>(this.urlAccount + "accountUsername="+ userName, httpOptions);
+    let a = this.http.get<any>(this.urlAccount + "?accountUsername="+ userName, httpOptions);
     console.log(a);
     return a;
   }
@@ -64,7 +67,40 @@ export class AccountService {
       "platformPreferences": []
     }
 
-    return this.http.post<any>(this.urlAccount, acc, httpOptions);
+    return this.http.post<any>(this.urlAccount+"?", acc, httpOptions);
+  }
+
+  updateAccount(account:
+    {
+      accountUsername: string,
+      accountImageUrl: string,
+      accountUser: {
+          userFirstName: string,
+          userLastName: string,
+          userEmail: string
+      }
+  }, accountId
+  ){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Authorization': 'Bearer '+ localStorage.getItem('auth')
+      })
+      
+    };
+
+    const acc = {
+      "accountUsername": account.accountUsername,
+      "accountImageUrl": account.accountImageUrl,
+      
+      "accountUser": {
+          "userFirstName": account.accountUser.userFirstName,
+          "userLastName": account.accountUser.userLastName,
+          "userEmail": account.accountUser.userEmail
+      }
+    }
+    
+    return this.http.put<any>(this.urlAccount+"/"+accountId, acc, httpOptions);
   }
 
   updateUser(userId: any, fName: string, lName: string, email: string): Observable<Object>{
