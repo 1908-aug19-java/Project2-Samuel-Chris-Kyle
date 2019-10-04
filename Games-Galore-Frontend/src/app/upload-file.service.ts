@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import * as AWS from 'aws-sdk/global';
 import * as S3 from 'aws-sdk/clients/s3';
-import * as ENV from '../environments/environment'
+//import * as ENV from '../environments/environment'
 import { Observable, of as observableOf } from 'rxjs';
 import { resolve } from 'dns';
  
@@ -16,9 +16,9 @@ export class UploadFileService {
  
     const bucket = new S3(
       {
-        accessKeyId: ENV.environment.S3_KEY_ID,
-        secretAccessKey: ENV.environment.S3_KEY_SECRET,
-        region: 'us-east-1'
+        // accessKeyId: ENV.environment.S3_KEY_ID,
+        // secretAccessKey: ENV.environment.S3_KEY_SECRET,
+        // region: 'us-east-1'
       }
     );
     
