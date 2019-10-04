@@ -40,15 +40,15 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
 
     //this.accountService.getAccount()
-    console.log(localStorage.getItem('auth'));
+    //console.log(localStorage.getItem('auth'));
     this.hold = JWT(localStorage.getItem('auth'));
-    console.log(this.hold);
-    console.log(this.hold.username);
+    //console.log(this.hold);
+    //console.log(this.hold.username);
 
     this.accountService.getAccount(this.hold.username).subscribe(
       (data: HttpResponse<any>) => {
 
-        console.log(data[0]);
+        //console.log(data[0]);
 
         //console.log(data[0].accountUsername);
         this.userProfile.userId=data[0].accountUser.userId;
@@ -59,11 +59,11 @@ export class ProfileComponent implements OnInit {
 
         if(data[0].accountImageUrl!=null){
           this.url = data[0].accountImageUrl;
-          console.log(data[0].accountImageUrl);
+          //console.log(data[0].accountImageUrl);
         }
         
 
-        console.log(this.userProfile);
+        //console.log(this.userProfile);
 
         this.uploadService.loadKeys().subscribe(
           (data) => {
@@ -93,11 +93,11 @@ export class ProfileComponent implements OnInit {
     this.uploadService.uploadfile(file, this.keyID, this.keySecret);
     let self = this;
     
-    console.log('Starting Timer');
+    //console.log('Starting Timer');
     setTimeout(function (){
-      console.log('timer');
+      //console.log('timer');
       self.url = "https://gamesgaloreimages.s3.amazonaws.com/jsa-s3/"+self.imageHold;
-      console.log('done');
+      //console.log('done');
 
       self.accountService.updateAccount({
 
@@ -111,11 +111,11 @@ export class ProfileComponent implements OnInit {
       }
       }, self.userProfile.userId).subscribe(
         (data) => {
-          console.log(data);
+          //console.log(data);
         }
       )
     }, 5000);
-    console.log('Timer should be done');
+    //console.log('Timer should be done');
     
 
     
@@ -130,7 +130,7 @@ export class ProfileComponent implements OnInit {
       this.userProfile.email).subscribe(
         (data: HttpResponse<any>) => {
 
-          console.log("Update successful.");
+          //console.log("Update successful.");
         },
         (error: HttpErrorResponse) => {
           this.showError = true;
