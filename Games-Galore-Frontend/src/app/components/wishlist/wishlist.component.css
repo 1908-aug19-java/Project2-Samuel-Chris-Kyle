@@ -1,0 +1,25 @@
+.sidenav {
+    width: 160px; /* Set the width of the sidebar */
+    z-index: 1; /* Stay on top */
+    top: 10; /* Stay at the top */
+    left: 0;
+    position: absolute;
+    background-color: #111; /* Black */
+    padding-top: 20px;
+  }
+  
+  .sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+  }
+  .sidenav h2, h3, label{
+    padding: 6px 8px 6px 16px;
+    color: white;
+  }
+  /* When you mouse over the navigation links, change their color */
+  .sidenav a:hover {
+    color: #f1f1f1;
+  }
