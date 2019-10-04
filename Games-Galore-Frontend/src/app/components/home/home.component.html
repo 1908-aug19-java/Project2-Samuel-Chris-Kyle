@@ -34,8 +34,7 @@
             <h6 *ngIf="game.platformPresent">Platforms: {{game.platformName}}</h6>
           </div>
           <div class="card-footer">
-            <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="bottom" title="{{game.summary}}">Info</button>
-            <button class="btn btn-success" style="float:right">Add to WishList</button>
+            <button type="button" style ="position:center;" class="btn btn-info" data-toggle="tooltip" data-placement="bottom" title="{{game.summary}}" (click) = "addToWishList(game)">More Info</button>
           </div>
         </div>
       </div>

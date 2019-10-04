@@ -16,10 +16,10 @@
           class="nav-link" href="" routerLink='./profile'>
           <h5>Profile</h5>
         </a></li>
-      <li class="nav-item" [ngClass]="{'active' : wishlistTab == true}" (click)="listClick('wishlist')"><a
-          class="nav-link" href="" routerLink='./wishlist'>
+      <!-- <li class="nav-item"  [ngClass]="{'active' : wishlistTab == true}" (click)="listClick('wishlist')"><a
+        disabled = "true" class="nav-link" href="" routerLink='./wishlist' >
           <h5>WishList</h5>
-        </a></li>
+        </a></li> -->
     </ul>
     <ul class="navbar-nav ml-auto">
         <li class="navbar-right"><a class="nav-link" routerLink='/login' id="logout" (click)="clearSession()">

@@ -5,6 +5,7 @@ import { PlatformService } from 'src/app/services/platform.service';
 import { Platform } from '../models/Platform';
 import { IGDBService } from 'src/app/services/igdb.service';
 import { Game } from '../models/Game';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -20,7 +21,7 @@ export class HomeComponent implements OnInit {
   ses = localStorage.getItem('auth');
   games: Game[] = [];
   cardDisplayArray: Game[][] = [];
-  constructor(private genreService: GenreService, private platformService: PlatformService, private igdbService: IGDBService) { }
+  constructor(private router: Router,private genreService: GenreService, private platformService: PlatformService, private igdbService: IGDBService) { }
 
   ngOnInit() {
     this.platformService.loadPlatforms().subscribe(
@@ -71,7 +72,10 @@ export class HomeComponent implements OnInit {
     );
 
   }
-
+  addToWishList(game : Game){
+    console.log(game);
+    window.open(game.url, "_blank");
+  }
   displayGames(games: Game[]) {
     games = games.sort((a,b) => b.popularity - a.popularity);
     for (let g of games) {
