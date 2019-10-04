@@ -27,13 +27,13 @@ export class RegisterComponent implements OnInit {
   rule4:string = 'One Number';
 
   account = {
-    accountUsername: this.uName,
-    accountPassword: this.pass,
-    confirmPassword: this.conPass,
+    accountUsername : "",
+    accountPassword: "",
+    confirmPassword: "",
     accountUser: {
-        userFirstName: this.fName,
-        userLastName: this.lName,
-        userEmail: this.email
+        userFirstName: "",
+        userLastName: "",
+        userEmail: ""
     },
     genrePreferences: [],
     platformPreferences: []
@@ -44,13 +44,13 @@ export class RegisterComponent implements OnInit {
 
   register() {
     this.showError = false;
+    console.log(this.account);
+
     this.accountService.createAccount(this.account).subscribe(
       (data: HttpResponse<any>) => {
 
-        let authorization = data.headers.get('authorization');
-        let key = 'auth';
-        localStorage.setItem(key, authorization);
-        this.router.navigateByUrl('/router/home');
+        
+        this.router.navigateByUrl('/login');
       },
       (error: HttpErrorResponse) => {
         this.showError = true;

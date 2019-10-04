@@ -14,8 +14,10 @@ export class ProfileComponent implements OnInit {
 
   selectedFiles: FileList;
 
-  url:string = "https://gamesgaloreimages.s3.amazonaws.com/jsa-s3/trident.png";
+  url:string = "https://gamesgaloreimages.s3.amazonaws.com/jsa-s3/default-avatar.jpg";
   imageHold:string;
+  keyID="";
+  keySecret="";
  
   constructor(private uploadService: UploadFileService, private accountService: AccountService) { }
  
@@ -55,7 +57,24 @@ export class ProfileComponent implements OnInit {
         this.userProfile.lName=data[0].accountUser.userLastName;
         this.userProfile.email=data[0].accountUser.userEmail;
 
+        if(data[0].accountImageUrl!=null){
+          this.url = data[0].accountImageUrl;
+          console.log(data[0].accountImageUrl);
+        }
+        
+
         console.log(this.userProfile);
+
+        this.uploadService.loadKeys().subscribe(
+          (data) => {
+            //console.log("keys loaded");
+            //console.log(data);
+            
+            this.keyID = data.keyStringId
+            this.keySecret = data.keySecret;
+            //console.log(this.keyID+this.keySecret);
+          }
+        );
 
       },
       (error: HttpErrorResponse) => {
@@ -71,7 +90,7 @@ export class ProfileComponent implements OnInit {
   upload() {
     const file = this.selectedFiles.item(0);
     this.imageHold=file.name;
-    this.uploadService.uploadfile(file);
+    this.uploadService.uploadfile(file, this.keyID, this.keySecret);
     let self = this;
     
     console.log('Starting Timer');
@@ -79,6 +98,22 @@ export class ProfileComponent implements OnInit {
       console.log('timer');
       self.url = "https://gamesgaloreimages.s3.amazonaws.com/jsa-s3/"+self.imageHold;
       console.log('done');
+
+      self.accountService.updateAccount({
+
+        
+        accountUsername: self.userProfile.userName,
+        accountImageUrl: self.url,
+        accountUser: {
+          userFirstName: self.userProfile.fName,
+          userLastName: self.userProfile.lName,
+          userEmail: self.userProfile.email
+      }
+      }, self.userProfile.userId).subscribe(
+        (data) => {
+          console.log(data);
+        }
+      )
     }, 5000);
     console.log('Timer should be done');
     
