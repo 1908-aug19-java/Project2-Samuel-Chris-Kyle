@@ -4,20 +4,43 @@ import * as S3 from 'aws-sdk/clients/s3';
 import * as ENV from '../environments/environment'
 import { Observable, of as observableOf } from 'rxjs';
 import { resolve } from 'dns';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
  
+let selfThis = this;
+
+
 @Injectable()
 export class UploadFileService {
  
   FOLDER = 'jsa-s3/';
+
+  
+
+  
+  url:string = "http://ec2-54-80-50-16.compute-1.amazonaws.com:8081/gamesgalore/keys/1"
+  constructor(private http: HttpClient) { }
+
+  loadKeys(){
+    console.log(localStorage.getItem('auth'));
+    const httpOtions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/x-www-form-urlencoded',
+        'Authorization': 'Bearer '+ localStorage.getItem('auth')
+
+      })
+      
+    };
+    return this.http.get<any>(this.url, httpOtions);
+  }
+  
+
  
-  constructor() { }
- 
-  uploadfile(file) {
+  uploadfile(file, keyID, keySecret) {
  
     const bucket = new S3(
       {
-        accessKeyId: ENV.environment.S3_KEY_ID,
-        secretAccessKey: ENV.environment.S3_KEY_SECRET,
+        accessKeyId: keyID,
+        secretAccessKey: keySecret,
         region: 'us-east-1'
       }
     );
@@ -63,6 +86,6 @@ export class UploadFileService {
       return observableOf(false);
       
     }
-  }
+  };
  
 }
